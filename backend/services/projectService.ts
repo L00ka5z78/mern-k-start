@@ -3,6 +3,7 @@ import ProjectModel from '../models/projectModel';
 import { ProjectType } from '../types/projectTypes';
 import { IProjectSchema } from '../schema/projectSchema';
 import { errorHandler } from '../middleware/errorMiddleware';
+import { sanitizeProject } from '../sanitizers/projectSanitizes';
 
 export async function getProjects(): Promise<ProjectType[]> {
   try {
@@ -17,6 +18,7 @@ export async function getProjects(): Promise<ProjectType[]> {
 export async function createProject(
   project: ProjectType
 ): Promise<ProjectType> {
+  const sanitizedProject = sanitizeProject(project);
   try {
     const newProject = await ProjectModel.create(project);
     if (!newProject) throw new Error('Project not created');
@@ -45,6 +47,8 @@ export async function updateProject(
   project: ProjectType
 ): Promise<IProjectSchema> {
   checkIsValidObjectId(projectId);
+  const sanitizedProject = sanitizeProject(project);
+
   try {
     const updatedProject = await ProjectModel.findByIdAndUpdate(
       projectId,

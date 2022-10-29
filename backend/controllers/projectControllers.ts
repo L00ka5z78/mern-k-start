@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
-import { checkIsValidObjectId } from '../database/db';
 const asyncHandler = require('express-async-handler');
-const mongoose = require('mongoose');
 import {
   createProject,
   getProjects,
@@ -13,6 +11,7 @@ import {
 //@desc Get all projects
 //@route GET /api/projects
 //@access Public
+
 const getProjectsHandler = asyncHandler(async (req: Request, res: Response) => {
   const projects = await getProjects();
   res.status(200).json(projects);
@@ -24,10 +23,6 @@ const getProjectsHandler = asyncHandler(async (req: Request, res: Response) => {
 
 const createProjectHandler = asyncHandler(
   async (req: Request, res: Response) => {
-    if (!req.body.title) {
-      res.status(400);
-      throw new Error('Title is required');
-    }
     const createdProject = await createProject(req.body);
     res.status(201).json(createdProject);
   }
@@ -48,12 +43,9 @@ const getProjectHandler = asyncHandler(async (req: Request, res: Response) => {
 
 const deleteProjectHandler = asyncHandler(
   async (req: Request, res: Response) => {
-    checkIsValidObjectId(req.params.id);
-    const project = await deleteProject(req.params.id);
-
+    await deleteProject(req.params.id);
     res.status(200).json({
       message: `Project ${req.params.id} deleted`,
-      project: project,
     });
   }
 );
@@ -64,11 +56,6 @@ const deleteProjectHandler = asyncHandler(
 
 const updateProjectHandler = asyncHandler(
   async (req: Request, res: Response) => {
-    if (!req.body.title) {
-      res.status(400);
-      throw new Error('Title is required');
-    }
-
     const project = await updateProject(req.params.id, req.body);
     res.json(project);
   }
