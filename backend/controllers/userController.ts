@@ -6,11 +6,12 @@ import {
   getUserById,
   deleteUser,
   updateUser,
+  loginUser,
 } from '../services/userService';
 
 //@desc Get all Users
 //@route GET /api/users
-//@access Public
+//@access public
 
 const getUsersHandler = asyncHandler(async (req: Request, res: Response) => {
   const users = await getUsers();
@@ -19,11 +20,20 @@ const getUsersHandler = asyncHandler(async (req: Request, res: Response) => {
 
 //@desc Create a new User
 //@route POST /api/user
-//@access Private
+//@access public
 
 const createUserHandler = asyncHandler(async (req: Request, res: Response) => {
   const createdUser = await createUser(req.body);
   res.status(201).json(createdUser);
+});
+
+//@desc login a user
+//@route post/api/User/login
+//access public
+
+const loginUserHandler = asyncHandler(async (req: Request, res: Response) => {
+  const user = await loginUser(req.body.email, req.body.password);
+  res.status(201).json(user);
 });
 
 //@desc Get a User by id
@@ -61,4 +71,5 @@ module.exports = {
   getUserHandler,
   deleteUserHandler,
   updateUserHandler,
+  loginUserHandler,
 };

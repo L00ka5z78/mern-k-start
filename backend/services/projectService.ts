@@ -19,7 +19,7 @@ export async function createProject(
 ): Promise<ProjectType> {
   const sanitizedProject = sanitizeProject(project);
   try {
-    const newProject = await ProjectModel.create(project);
+    const newProject = await ProjectModel.create(sanitizedProject);
     if (!newProject) throw new Error('Project not created');
     return newProject;
   } catch (err) {
@@ -51,7 +51,7 @@ export async function updateProject(
   try {
     const updatedProject = await ProjectModel.findByIdAndUpdate(
       projectId,
-      project,
+      sanitizedProject,
       { new: true }
     );
     if (!updatedProject) throw new Error('Project not found');
