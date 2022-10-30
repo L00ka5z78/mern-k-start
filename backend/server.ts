@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import { connectDB } from './database/db';
 import { errorHandler } from './middleware/errorMiddleware';
 import { PORT } from './utils/config';
@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json()); //app ca use json
 
 app.use('/api/projects', require('./routes/projectRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 app.use(errorHandler);
 

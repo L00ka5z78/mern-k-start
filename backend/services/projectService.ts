@@ -2,7 +2,6 @@ import { checkIsValidObjectId } from '../database/db';
 import ProjectModel from '../models/projectModel';
 import { ProjectType } from '../types/projectTypes';
 import { IProjectSchema } from '../schema/projectSchema';
-import { errorHandler } from '../middleware/errorMiddleware';
 import { sanitizeProject } from '../sanitizers/projectSanitizes';
 
 export async function getProjects(): Promise<ProjectType[]> {
@@ -11,7 +10,7 @@ export async function getProjects(): Promise<ProjectType[]> {
     if (!projects) throw new Error('Projects not found');
     return projects;
   } catch (err) {
-    throw new Error('Error getting projects');
+    throw new Error(`Error getting projects: ${err.message}`);
   }
 }
 
@@ -24,7 +23,7 @@ export async function createProject(
     if (!newProject) throw new Error('Project not created');
     return newProject;
   } catch (err) {
-    throw new Error('Error creating project');
+    throw new Error(`Error creating project: ${err.message}`);
   }
 }
 
@@ -38,7 +37,7 @@ export async function getProjectById(
     if (!project) throw new Error('Project not found');
     return project;
   } catch (err) {
-    throw new Error('Error finding project');
+    throw new Error(`Error getting project: ${err.message}`);
   }
 }
 
@@ -58,7 +57,7 @@ export async function updateProject(
     if (!updatedProject) throw new Error('Project not found');
     return updatedProject;
   } catch (err) {
-    throw new Error('Error updating project');
+    throw new Error(`Error updating project: ${err.message}`);
   }
 }
 
@@ -70,6 +69,6 @@ export async function deleteProject(projectId: string): Promise<void> {
     if (!project) throw new Error('Project not found');
     return;
   } catch (err) {
-    throw new Error('Error deleting project!');
+    throw new Error(`Error deleting project: ${err.message}`);
   }
 }
