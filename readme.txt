@@ -11,7 +11,7 @@ but worth while to develop good practices.
 
 npm init @eslint/config
 
-npx husky init
+npx husky-init
 
 Usage:
   husky install [dir] (default: .husky)
