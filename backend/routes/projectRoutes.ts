@@ -1,22 +1,23 @@
 import * as express from 'express';
 import { protect } from '../models/authMiddleware';
-// import express from 'express';
+const projectRoutes = express.Router();
 
-const router = express.Router();
+import {
+    getProjectsHandler,
+    createProjectHandler,
+    getProjectHandler,
+    deleteProjectHandler,
+    updateProjectHandler,
+} from '../controllers/projectController';
 
-const {
-  getProjectsHandler,
-  createProjectHandler,
-  getProjectHandler,
-  deleteProjectHandler,
-  updateProjectHandler,
-} = require('../controllers/projectController');
+projectRoutes
+    .route('/')
+    .get(getProjectsHandler)
+    .post(protect, createProjectHandler);
+projectRoutes
+    .route('/:id')
+    .get(getProjectHandler)
+    .put(protect, updateProjectHandler)
+    .delete(protect, deleteProjectHandler);
 
-router.route('/').get(getProjectsHandler).post(protect, createProjectHandler);
-router
-  .route('/:id')
-  .get(getProjectHandler)
-  .put(protect, updateProjectHandler)
-  .delete(protect, deleteProjectHandler);
-
-module.exports = router;
+export default projectRoutes;
