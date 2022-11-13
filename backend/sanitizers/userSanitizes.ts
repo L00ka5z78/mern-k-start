@@ -1,10 +1,6 @@
-// import * as bcrypt from 'bcryptjs'; //doesnt work
-
 import { emailRegex } from '../schema/userSchema';
 import { UserType } from '../types/userTypes';
 import HttpException from '../utils/httpException';
-// import * as jwt from 'jsonwebtoken';
-// const bcrypt = require('bcryptjs');
 
 export async function sanitizeUser(users: UserType): Promise<UserType> {
     const sanitizedUser = <UserType>{};

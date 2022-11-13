@@ -11,6 +11,8 @@ but worth while to develop good practices.
 
 npm init @eslint/config
 
+husky enforces eslint with pre commits
+
 npx husky-init
 
 Usage:
@@ -19,3 +21,5 @@ Usage:
   husky set|add <file> [cmd]
 
   npm install
+
+  //film 35'
