@@ -1,6 +1,5 @@
 import * as express from 'express';
 import { protect } from '../models/authMiddleware';
-const projectRoutes = express.Router();
 
 import {
     getProjectsHandler,
@@ -9,6 +8,7 @@ import {
     deleteProjectHandler,
     updateProjectHandler,
 } from '../controllers/projectController';
+const projectRoutes = express.Router();
 
 projectRoutes
     .route('/')

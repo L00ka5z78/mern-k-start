@@ -1,6 +1,5 @@
 import * as express from 'express';
 import { protect } from '../models/authMiddleware';
-const userRoutes = express.Router();
 
 import {
     getUsersHandler,
@@ -10,6 +9,7 @@ import {
     updateUserHandler,
     loginUserHandler,
 } from '../controllers/userController';
+const userRoutes = express.Router();
 
 userRoutes.route('/').get(protect, getUsersHandler).post(createUserHandler);
 userRoutes.route('/login').post(loginUserHandler);

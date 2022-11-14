@@ -22,4 +22,4 @@ Usage:
 
   npm install
 
-  //film 35'
+  npm i eslint-config-standard-with-typescript

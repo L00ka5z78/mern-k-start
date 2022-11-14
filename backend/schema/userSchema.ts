@@ -1,7 +1,7 @@
 import { Schema } from 'mongoose';
 import { UserType } from '../types/userTypes';
 
-//eslint-disable-next-line no-useless-escape
+// eslint-disable-next-line no-useless-escape
 export const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 export interface IUserSchema extends UserType {
@@ -34,8 +34,8 @@ const userSchema = new Schema<UserType>(
             type: Boolean,
             default: false,
         },
-        resetPasswordToken: String, //token to reset password with
-        resetPasswordExpires: Date, //expires date of token
+        resetPasswordToken: String, // token to reset password with
+        resetPasswordExpires: Date, // expires date of token
     },
 
     {

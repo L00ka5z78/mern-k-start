@@ -7,6 +7,13 @@ export interface UserType {
     resetPasswordExpires: Date;
 }
 
+export interface UserSanitazerType {
+    username: string;
+    email: string;
+    password: string;
+    isAdmin: boolean;
+}
+
 export interface UserReturnType {
     _id: string;
     username: string;

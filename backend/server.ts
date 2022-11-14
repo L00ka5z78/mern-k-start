@@ -9,11 +9,13 @@ import userRoutes from './routes/userRoutes';
 
 Colors.colors('', '');
 
-connectDB();
+export const db = async (): Promise<void> => {
+    await connectDB();
+};
 
 const app = express();
 app.use(express.json());
-//app ca use json
+// app ca use json
 
 app.use('/api/projects', projectRoutes);
 app.use('/api/users', userRoutes);

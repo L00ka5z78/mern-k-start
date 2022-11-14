@@ -9,9 +9,9 @@ import {
     loginUser,
 } from '../services/userService';
 
-//@desc Get all Users
-//@route GET /api/users
-//@access public
+//  @desc Get all Users
+//  @route GET /api/users
+//  @access public
 
 export const getUsersHandler = asyncHandler(
     async (req: Request, res: Response) => {
@@ -20,9 +20,9 @@ export const getUsersHandler = asyncHandler(
     }
 );
 
-//@desc Create a new User
-//@route POST /api/user
-//@access public
+//  @desc Create a new User
+//  @route POST /api/user
+//  @access public
 
 export const createUserHandler = asyncHandler(
     async (req: Request, res: Response) => {
@@ -31,9 +31,9 @@ export const createUserHandler = asyncHandler(
     }
 );
 
-//@desc login a user
-//@route post/api/User/login
-//access public
+//  @desc login a user
+//  @route post/api/User/login
+//  access public
 
 export const loginUserHandler = asyncHandler(
     async (req: Request, res: Response) => {
@@ -42,9 +42,9 @@ export const loginUserHandler = asyncHandler(
     }
 );
 
-//@desc Get a User by id
-//@route GET /api/user/:id
-//@access Public
+//  @desc Get a User by id
+//  @route GET /api/user/:id
+//  @access Public
 
 export const getUserHandler = asyncHandler(
     async (req: Request, res: Response) => {
@@ -53,9 +53,9 @@ export const getUserHandler = asyncHandler(
     }
 );
 
-//@desc Delete a User by id
-//@route DELETE /api/user/:id
-//@access Private
+//  @desc Delete a User by id
+//  @route DELETE /api/user/:id
+//  @access Private
 
 export const deleteUserHandler = asyncHandler(
     async (req: Request, res: Response) => {
@@ -66,9 +66,9 @@ export const deleteUserHandler = asyncHandler(
     }
 );
 
-//@desc Update a User by id
-//@route PUT /api/user/:id
-//@access Private
+//  @desc Update a User by id
+//  @route PUT /api/user/:id
+//  @access Private
 
 export const updateUserHandler = asyncHandler(
     async (req: Request, res: Response) => {

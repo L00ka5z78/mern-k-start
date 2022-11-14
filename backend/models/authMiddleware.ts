@@ -11,11 +11,12 @@ export interface GetUserAuthInfoRequest extends Request {
 
 export const protect = asyncHandler(
     async (req: GetUserAuthInfoRequest, res: Response, next: NextFunction) => {
-        //expect {headers: {authorization: "Bearer token"}}
+        // expect {headers: {authorization: "Bearer token"}}
 
         if (
-            !req.headers ||
-            !req.headers.authorization ||
+            req.headers.authorization === null ||
+            req.headers.authorization === '' ||
+            req.headers.authorization === undefined ||
             !req.headers.authorization.startsWith('Bearer ')
         ) {
             throw new HttpException('Unauthorized', 401);
