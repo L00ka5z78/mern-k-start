@@ -2,11 +2,15 @@ import { NextFunction, Request, Response } from 'express';
 import asyncHandler from 'express-async-handler';
 import { verifyToken } from '../services/tokenService';
 import { getUserById } from '../services/userService';
-import { UserType } from '../types/userTypes';
+import { UserReturnType, UserType } from '../types/userTypes';
 import HttpException from '../utils/httpException';
 
 export interface GetUserAuthInfoRequest extends Request {
     user?: UserType;
+}
+
+export interface AuthorizedUserRequest extends Request {
+    user?: UserReturnType;
 }
 
 export const protect = asyncHandler(

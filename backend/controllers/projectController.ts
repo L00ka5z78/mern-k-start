@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import asyncHandler from 'express-async-handler';
+import { AuthorizedUserRequest } from '../models/authMiddleware';
 
 import {
     createProject,
@@ -26,8 +27,8 @@ export const getProjectsHandler = asyncHandler(
 // @access Private
 
 export const createProjectHandler = asyncHandler(
-    async (req: Request, res: Response) => {
-        const createdProject = await createProject(req.body);
+    async (req: AuthorizedUserRequest, res: Response) => {
+        const createdProject = await createProject(req.body, req.user?._id);
         res.status(201).json(createdProject);
     }
 );
@@ -48,8 +49,8 @@ export const getProjectHandler = asyncHandler(
 // @access Private
 
 export const deleteProjectHandler = asyncHandler(
-    async (req: Request, res: Response) => {
-        await deleteProject(req.params.id);
+    async (req: AuthorizedUserRequest, res: Response) => {
+        await deleteProject(req.params.id, req.user?._id);
         res.status(200).json({
             message: `Project ${req.params.id} deleted`,
         });
@@ -61,8 +62,13 @@ export const deleteProjectHandler = asyncHandler(
 // @access Private
 
 export const updateProjectHandler = asyncHandler(
-    async (req: Request, res: Response) => {
-        const project = await updateProject(req.params.id, req.body);
+    async (req: AuthorizedUserRequest, res: Response) => {
+        const project = await updateProject(
+            req.params.id,
+            req.body,
+            req.user?._id
+        );
+
         res.json(project);
     }
 );
