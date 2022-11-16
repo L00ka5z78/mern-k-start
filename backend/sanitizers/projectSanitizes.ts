@@ -34,5 +34,5 @@ function sanitizeTitle(title: string): string {
     //   res.status(400);
     //   throw new Error('Title is required');
     // }      // 11-35 sanitizeTitle is the same as those if condition
-    return title.trim(); // trim => removes white signs as spaces
+    // return title.trim(); // trim => removes white signs as spaces
 }

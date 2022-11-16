@@ -1,7 +1,7 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "esModuleInterop": true,
-    "useUnknownInCatchVariables": false
-  }
+    "compilerOptions": {
+        "strict": true,
+        "esModuleInterop": true,
+        "useUnknownInCatchVariables": false
+    }
 }

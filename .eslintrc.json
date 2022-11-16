@@ -15,6 +15,12 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
-    "rules": {},
+    "rules": {
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "windows"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "constructor-super": ["error"]
+    },
     "plugins": ["prettier"]
 }

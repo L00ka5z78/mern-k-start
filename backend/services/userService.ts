@@ -75,7 +75,7 @@ export async function loginUser(
             user.password
         );
         if (!isPasswordValid)
-            throw new HttpException(`Password is invalid`, 401);
+            throw new HttpException('Password is invalid', 401);
 
         return {
             _id: user._id,
