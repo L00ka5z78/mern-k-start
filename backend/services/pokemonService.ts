@@ -92,6 +92,7 @@ async function isUserAuthorized(
     const PokemonToUpdate = await getPokemonById(PokemonId);
 
     if (sanitizedUserId !== PokemonToUpdate.userId) {
+        // if (sanitizedUserId !== projectToUpdate._id)
         throw new HttpException(
             'You are not authorized to perform this action',
             401

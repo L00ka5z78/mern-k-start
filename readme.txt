@@ -28,7 +28,7 @@ Usage:
 Optional features to make the applikaction more robust and production standard, not necessary for building the basics
 but worth while to develop good practices.
 
-    1. Associating projects with users who create them.
+    1. Associating Pokemons with users who create them.
     2. Implement authorization
     3. fix previous mistake where the error handler no longer returns proper error messages.
     4. Update the error handler to catch common error types.
